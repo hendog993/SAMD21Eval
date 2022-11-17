@@ -8,7 +8,7 @@
  * 
  * 8 Bit interface only allows 1 instance and requires hard coding the pin names. 
  */
- 
+
 
 #ifndef ENTER_FILENAME_H
 #define ENTER_FILENAME_H
@@ -20,41 +20,82 @@
 #include "sn74hc595n.h"
 #include "stdbool.h"
 #include <stdint.h>
+#include "../src/config/default/peripheral/port/plib_port.h"
+
 
 /*********************** Type Definition(s) ******************************/
+
+/* Enum: 
+ *      POWER_CONFIGURATION
+ * 
+ * Description: 
+ *      Delineates hardware configuration for common anode (active high) vs common cathode (active low).  
+ *      Active high means 
+ */
 typedef enum
 {
     COMMON_ANODE,
     COMMON_CATHODE
 } POWER_CONFIGURATION;
 
-
-/* Declare an instance of a seven segment display based on an input shift register and the 
- * pins that control each digit. Power configuration depends on the device's common cathode 
- * or common anode. For floats, set numFloatSigDigits based on significant digits expected. 
- * ie, if only 1 significant digit is expected, with the remaining 3 as decimal points, 
- * set numFloatSigDigits to 1. 3 sig digits would imply 123.5, 905.3, etc. 
+/* Struct:
+ *      FourDigit7SegDisplay
+ * 
+ * Description:
+ *      Contains elements for seven segment instance. 
+ * 
  */
 typedef struct
 {
     POWER_CONFIGURATION pwrCfg;
-    uint8_t numFloatSigDigits; 
+    uint8_t numFloatSigDigits;
+    PORT_PIN d1;
+    PORT_PIN d2;
+    PORT_PIN d3;
+    PORT_PIN d4;
+    SN74HC595N * sr;
 } FourDigit7SegDisplay;
 
 
 
 
-
 /*********************** Function Prototype(s) ***************************/
-bool SevenSeg_Initialize(FourDigit7SegDisplay * ss);
 
-bool SevenSeg_WriteInteger( const FourDigit7SegDisplay * const ss,
-                            uint16_t value );
+/* Function:
+ *      SevenSeg_Initialize
+ * 
+ * Description:
+ *      Initializes an instance of a seven segment display. Writes to an existing instance pointer. Requires
+ *      an already created instance of a shift register. 
+ * 
+ */
+bool SevenSeg_Initialize( FourDigit7SegDisplay * const ss,
+                          SN74HC595N * const sr,
+                          const PORT_PIN d1,
+                          const PORT_PIN d2,
+                          const PORT_PIN d3,
+                          const PORT_PIN d4,
+                          const POWER_CONFIGURATION pwrCfg,
+                          const uint8_t floatPrecision );
 
-bool SevenSeg_WriteFloat( const FourDigit7SegDisplay * const ss,
-                          const float value );
 
-bool SevenSeg_Clear( const FourDigit7SegDisplay * const ss );
+/* Function:
+ *      SevenSeg_WriteInteger
+ * 
+ * Description:
+ *      Writes an integer to the seven segment display 
+ */
+bool SevenSeg_WriteInteger(const FourDigit7SegDisplay * const ss,
+        uint16_t value);
+
+
+
+bool SevenSeg_WriteFloat(const FourDigit7SegDisplay * const ss,
+        const float value);
+
+
+
+bool SevenSeg_Clear(const FourDigit7SegDisplay * const ss);
 
 
 

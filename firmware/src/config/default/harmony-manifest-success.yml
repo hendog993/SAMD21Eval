@@ -4,13 +4,13 @@
 
 
 project: SAMD21Eval
-creation_date: 2022-11-17T05:06:58.091-06:00[America/Chicago]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2022-11-17T14:36:44.020-06:00[America/Chicago]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mhc_mode: IDE            # [IDE|Standalone|Headless]
 mhc_version: v3.8.5
-mplabx_version: v6.00        # if MPLAB X plugin only
+mplabx_version: v5.50        # if MPLAB X plugin only
 plugin_version: v3.6.4        # if MPLAB X plugin only
-compiler: XC32 (2.10)
+compiler: XC32 (2.50)
 
 modules:
     - {name: "csp", version: "v3.12.0"}

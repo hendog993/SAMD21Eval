@@ -105,7 +105,9 @@ uint32_t TC4_Timer32bitCounterGet( void );
 void TC4_Timer32bitCounterSet( uint32_t count );
 
 
-bool TC4_TimerPeriodHasExpired( void );
+
+void TC4_TimerCallbackRegister( TC_TIMER_CALLBACK callback, uintptr_t context );
+
 
 void TC4_TimerCommandSet(TC_COMMAND command);
 

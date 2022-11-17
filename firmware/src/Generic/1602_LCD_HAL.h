@@ -237,8 +237,6 @@ void LCM1602_FunctionSet(const LCD_1602 * const lcd,
         const LCM_DISPLAY_LINE_CONTROL lc,
         const LCM_DISPLAY_DOT_TYPE dt);
 
-
-
 /* Function:
  *      LCM1602_CGRAM_Addr_Set
  * 
@@ -275,7 +273,6 @@ bool LCM1602_ReadFlagsAndAddr(const LCD_1602 * const lcd,
         uint8_t * const addr);
 
 
-
 /* Function:
  *      LCM1602_ReadRAM
  * 
@@ -284,7 +281,6 @@ bool LCM1602_ReadFlagsAndAddr(const LCD_1602 * const lcd,
  *      
  */
 uint8_t LCM1602_ReadRAM(const LCD_1602 * const lcd);
-
 
 
 /* Function:
@@ -296,7 +292,6 @@ uint8_t LCM1602_ReadRAM(const LCD_1602 * const lcd);
  */
 void LCM1602_WriteRAM(const LCD_1602 * const lcd,
         const uint8_t value);
-
 
 
 #endif

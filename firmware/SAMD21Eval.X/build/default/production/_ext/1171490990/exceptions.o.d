@@ -71,16 +71,12 @@ build/default/production/_ext/1171490990/exceptions.o: \
  ../src/config/default/device_cache.h ../src/config/default/device.h \
  ../src/config/default/toolchain_specifics.h \
  ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h \
- ../src/config/default/peripheral/sercom/usart/plib_sercom1_usart.h \
- ../src/config/default/peripheral/sercom/usart/plib_sercom_usart_common.h \
  ../src/config/default/peripheral/evsys/plib_evsys.h \
  ../src/config/default/peripheral/tcc/plib_tcc0.h \
  ../src/config/default/peripheral/tcc/plib_tcc_common.h \
  ../src/config/default/peripheral/port/plib_port.h \
  ../src/config/default/peripheral/clock/plib_clock.h \
  ../src/config/default/peripheral/nvic/plib_nvic.h \
- ../src/config/default/peripheral/adc/plib_adc.h \
- ../src/config/default/peripheral/adc/plib_adc_common.h \
  ../src/config/default/peripheral/tc/plib_tc4.h \
  ../src/config/default/peripheral/tc/plib_tc_common.h
 
@@ -230,10 +226,6 @@ build/default/production/_ext/1171490990/exceptions.o: \
 
 ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h:
 
-../src/config/default/peripheral/sercom/usart/plib_sercom1_usart.h:
-
-../src/config/default/peripheral/sercom/usart/plib_sercom_usart_common.h:
-
 ../src/config/default/peripheral/evsys/plib_evsys.h:
 
 ../src/config/default/peripheral/tcc/plib_tcc0.h:
@@ -245,10 +237,6 @@ build/default/production/_ext/1171490990/exceptions.o: \
 ../src/config/default/peripheral/clock/plib_clock.h:
 
 ../src/config/default/peripheral/nvic/plib_nvic.h:
-
-../src/config/default/peripheral/adc/plib_adc.h:
-
-../src/config/default/peripheral/adc/plib_adc_common.h:
 
 ../src/config/default/peripheral/tc/plib_tc4.h:
 
