@@ -14,7 +14,7 @@
 
 /***************** Included File(s) ****************/
 #include "delay.h"
-
+#include "../src/config/default/peripheral/tc/plib_tc4.h"
 
 
 /***************** Macro Definition(s) *************/
@@ -28,6 +28,17 @@
 
 
 /*************** Static Function Prototype(s) ******/
+
+
+
+
+void __Delay_ms(uint32_t ms)
+{
+    
+    
+    
+}
+
 
 
 /* end delay.c */
