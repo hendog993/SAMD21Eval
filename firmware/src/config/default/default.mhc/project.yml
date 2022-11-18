@@ -6,13 +6,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: E45D1648EFC10229D7BE94DB19221FF7
-- generatedChecksum: 05267965C79772BFDC13212468CF024D
+- generatedChecksum: 76C84DAF6BB6FF96533A68F88AC9026A
   logicalPath: config/default
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 05267965C79772BFDC13212468CF024D
+  userChecksum: 76C84DAF6BB6FF96533A68F88AC9026A
 - generatedChecksum: 569677C2F5CB4E1C7FB44FDFDBBE35E1
   logicalPath: config/default
   name: interrupts.c
@@ -34,13 +34,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: FC5868C8328D4BFC8E0B75EAF759B07D
+- generatedChecksum: BA3DB44E55DCFF8BD9ADC7E32BDF058E
   logicalPath: config/default/peripheral/clock
   name: plib_clock.c
   physicalPath: peripheral/clock
   security: NON_SECURE
   type: SOURCE
-  userChecksum: FC5868C8328D4BFC8E0B75EAF759B07D
+  userChecksum: BA3DB44E55DCFF8BD9ADC7E32BDF058E
 - generatedChecksum: C3ECDED3D6301DB0DE622293ED615D21
   logicalPath: config/default/peripheral/evsys
   name: plib_evsys.c
@@ -62,27 +62,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 8E76B0609233122F5E1694614CEC13B1
-- generatedChecksum: 0ABEAB604CAE88AAFC6B27647181028B
+- generatedChecksum: 903B6090E7C2E9EDB3483F5AA78F638E
   logicalPath: config/default/peripheral/port
   name: plib_port.c
   physicalPath: peripheral/port
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 0ABEAB604CAE88AAFC6B27647181028B
-- generatedChecksum: 467DD2AA2839AF005120556037EF7AB4
+  userChecksum: 903B6090E7C2E9EDB3483F5AA78F638E
+- generatedChecksum: FA9B8AF871B5F492569746F01FEDED37
   logicalPath: config/default/peripheral/tc
   name: plib_tc4.c
   physicalPath: peripheral/tc
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 467DD2AA2839AF005120556037EF7AB4
-- generatedChecksum: A9ED96938BF1BC9EEEF0F7BC405C5ABD
-  logicalPath: config/default/peripheral/tcc
-  name: plib_tcc0.c
-  physicalPath: peripheral/tcc
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: A9ED96938BF1BC9EEEF0F7BC405C5ABD
+  userChecksum: FA9B8AF871B5F492569746F01FEDED37
 - generatedChecksum: 2645E564BD945DAED1424FD8D7B39330
   logicalPath: config/default
   name: startup_xc32.c
@@ -202,13 +195,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 2AD9700A41DC94A60C663A17CEDB2703
-- generatedChecksum: 34037118A6E03414721EC68333752E09
+- generatedChecksum: F322368E6FD2A04B826BA8575F159451
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 34037118A6E03414721EC68333752E09
+  userChecksum: F322368E6FD2A04B826BA8575F159451
 - generatedChecksum: 636DD2FCAC011D9457B3B1813AC63647
   logicalPath: config/default
   name: device.h
@@ -419,13 +412,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: AE3541D9EB0BC86EE90AC03EA3E1339F
-- generatedChecksum: 5C8E52ADB087941AD7A0FE931605965A
+- generatedChecksum: C9855A887ED85C4CE4FB8E35FB2306DB
   logicalPath: config/default/peripheral/port
   name: plib_port.h
   physicalPath: peripheral/port
   security: NON_SECURE
   type: HEADER
-  userChecksum: 5C8E52ADB087941AD7A0FE931605965A
+  userChecksum: C9855A887ED85C4CE4FB8E35FB2306DB
 - generatedChecksum: 0415C9891450874018D15CCDC4969CC3
   logicalPath: config/default/peripheral/tc
   name: plib_tc4.h
@@ -440,20 +433,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 6DBEAF7BD42014F5492374805406687A
-- generatedChecksum: D61131578230DD9BF49B822C0AE10834
-  logicalPath: config/default/peripheral/tcc
-  name: plib_tcc0.h
-  physicalPath: peripheral/tcc
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: D61131578230DD9BF49B822C0AE10834
-- generatedChecksum: A3CDE469C6A4D2725F34E837408E286C
-  logicalPath: config/default/peripheral/tcc
-  name: plib_tcc_common.h
-  physicalPath: peripheral/tcc
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: A3CDE469C6A4D2725F34E837408E286C
 - generatedChecksum: 482E54FA91E3C975FBC8AEE336572A05
   logicalPath: packs/ATSAMD21J18A_DFP/component
   name: pm.h

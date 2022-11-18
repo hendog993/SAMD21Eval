@@ -22,17 +22,9 @@
 #include "definitions.h"                // SYS function prototypes
 #include "Generic/7segSR.h"
 
-static void updateDutyCycle( __attribute__( (unused) ) TC_TIMER_STATUS status, uintptr_t context );
-static volatile bool isUp = true;
-static const uint32_t minDutyCycle = 10u;
-static const uint32_t maxDutyCycle = 170u;
-static volatile uint32_t dutyCycle;
-
 
 static SN74HC595N tsr;
-
-/* Setup shift register */
-
+static FourDigit7SegDisplay dis;
 
 
 
@@ -40,56 +32,41 @@ int main( void )
 {
     SYS_Initialize( NULL );
 
-    TC4_TimerCallbackRegister( updateDutyCycle, NULL );
-    TC4_TimerStart( );
+//    TC4_TimerCallbackRegister( updateDutyCycle, (uintptr_t) NULL );
+//    TC4_TimerStart( );
 
-    dutyCycle = minDutyCycle;
-    TCC0_PWM24bitDutySet( TCC0_CHANNEL2, dutyCycle );
-    TCC0_PWMStart( );
 
     bool srreturnval = SN74HC595N_Initialize( &tsr,
+                                              PORT_PIN_PA10,
                                               PORT_PIN_PA20,
-                                              PORT_PIN_PA21,
                                               PORT_PIN_PB12 );
+
+    srreturnval &= SevenSeg_Initialize( &dis,
+                                        &tsr,
+                                        PORT_PIN_PB14,
+                                        PORT_PIN_PA08,
+                                        PORT_PIN_PB11,
+                                        PORT_PIN_PA17,
+                                        COMMON_CATHODE,
+                                        2 );
 
     while (true)
     {
         SYS_Tasks( );
 
-        SN74HC595N_WriteByteMSB( &tsr, 0xA5u );
+        SevenSeg_WriteInteger(&dis, 0u);
+        SevenSeg_WriteInteger(&dis, 1234u);
+        SevenSeg_WriteInteger(&dis, 2345u);
+        SevenSeg_WriteInteger(&dis, 3465u);
+        SevenSeg_WriteInteger(&dis, 4576u);
+        SevenSeg_WriteInteger(&dis, 5678u);
+        SevenSeg_WriteInteger(&dis, 6789u);
+        SevenSeg_WriteInteger(&dis, 7809u);
+        SevenSeg_WriteInteger(&dis, 1009u);
+        SevenSeg_WriteInteger(&dis, 0010u);
 
-
+        
     }
 
     return ( EXIT_FAILURE);
-}
-
-static void updateDutyCycle( __attribute__( (unused) ) TC_TIMER_STATUS status, uintptr_t context )
-{
-    if (isUp)
-    {
-        if (maxDutyCycle != dutyCycle)
-        {
-            dutyCycle++;
-        }
-        else
-        {
-            isUp = false;
-        }
-    }
-
-    if (!isUp)
-    {
-        if (minDutyCycle != dutyCycle)
-        {
-            dutyCycle--;
-        }
-        else
-        {
-            isUp = true;
-        }
-    }
-    TCC0_PWM24bitDutySet( TCC0_CHANNEL2, dutyCycle );
-    TCC0_PWMForceUpdate( );
-
 }

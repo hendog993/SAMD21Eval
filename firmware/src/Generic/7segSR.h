@@ -74,7 +74,7 @@ bool SevenSeg_Initialize( FourDigit7SegDisplay * const ss,
                           const PORT_PIN d1,
                           const PORT_PIN d2,
                           const PORT_PIN d3,
-                          const PORT_PIN d4,
+                          const PORT_PIN d4, // NOTE: Maintain this order for pointer arithmetic. 
                           const POWER_CONFIGURATION pwrCfg,
                           const uint8_t floatPrecision );
 

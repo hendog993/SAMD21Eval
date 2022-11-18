@@ -22,10 +22,6 @@
 /*********************** Macro Definition(s) *****************************/
 #define NUM_BITS_IN_BYTE 8u
 
-#ifndef _XTAL_FREQ
-#define _XTAL_FREQ 64000000
-#endif
-
 
 
 /*********************** Function Prototype(s) ***************************/

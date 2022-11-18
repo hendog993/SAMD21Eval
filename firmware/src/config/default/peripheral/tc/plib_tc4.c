@@ -87,7 +87,7 @@ void TC4_TimerInitialize( void )
     TC4_REGS->COUNT32.TC_CTRLA = TC_CTRLA_MODE_COUNT32 | TC_CTRLA_PRESCALER_DIV1 | TC_CTRLA_WAVEGEN_MPWM ;
 
     /* Configure timer period */
-    TC4_REGS->COUNT32.TC_CC[0U] = 576000U;
+    TC4_REGS->COUNT32.TC_CC[0U] = 12000000U;
 
     /* Clear all interrupt flags */
     TC4_REGS->COUNT32.TC_INTFLAG = TC_INTFLAG_Msk;

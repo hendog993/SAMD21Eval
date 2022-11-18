@@ -163,7 +163,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc4, value: '576000'}
+        attributes: {id: tc4, value: '12000000'}
   - type: File
     attributes: {id: TC_TIMER_SOURCE}
     children:
@@ -185,7 +185,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '12.0'}
+        attributes: {value: '250.0'}
   - type: Combo
     attributes: {id: TC_TIMER_UNIT}
     children:
@@ -208,4 +208,4 @@ children:
       - type: Dynamic
         attributes: {id: tc4, value: '32'}
 - type: ElementPosition
-  attributes: {x: '26', y: '465', id: tc4}
+  attributes: {x: '18', y: '468', id: tc4}

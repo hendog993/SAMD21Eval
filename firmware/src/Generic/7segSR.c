@@ -10,12 +10,19 @@
  * Description: 
  *      7 segment display driver for instance use of display. Includes methods to write floating point values 
  *      as well as integer values. 
+ * 
+ *      With personal module, activating a digit will open a sink to GND using a transistor, so all digits are  
+ *      active high to the logic side. 
+ * 
+ *      
  */
 
 /*********************** Included File(s) ********************************/
 #include "7segSR.h"
 #include <stdlib.h>
 #include <math.h>
+#include "sn74hc595n.h"
+#include <xc.h>
 
 /*********************** Type Definition(s) ******************************/
 
@@ -27,12 +34,12 @@
 #define NUM_DIGITS_ENCODED 10u
 #define DECIMAL_POINT_MASK 0x01u
 #define MAX_INT_TO_DISPLAY 9999u
-
+#define MAX_DIGITS_TO_DISPLAY 4
 
 
 /********************** Local Function Prototype(s) **********************/
-static void SevenSeg_WriteIndividualDigit( const FourDigit7SegDisplay * const ss,
-                                           uint8_t value );
+static void WriteSevenSegmentValue( const FourDigit7SegDisplay * const ss,
+                                    const uint8_t * const writeArray );
 
 
 /************************** Local Variable(s) ****************************/
@@ -40,13 +47,13 @@ static void SevenSeg_WriteIndividualDigit( const FourDigit7SegDisplay * const ss
 /* Digit encodings - order is A-B-C-D-E-F-G-dp 
  * Dp is always zero, since a decimal point is assigned at runtime. 
  */
-static const uint8_t digitEncodings[NUM_DIGITS_ENCODED] = {
+static const uint8_t digitEncodings[10] = {
     0b11111100, // zero
     0b01100000, // one 
     0b11011010, // two
     0b11110010, // three
     0b01100110, // four
-    0b10010110, // five
+    0b10110110, // five
     0b10111110, // six
     0b11100000, // seven
     0b11111110, // eight
@@ -120,40 +127,85 @@ bool SevenSeg_WriteInteger( const FourDigit7SegDisplay * const ss,
         return false;
     }
 
-    /* Determine number of digits */
-    size_t numDigits = log( value ) + 1;
-    uint8_t * digitArray = malloc( numDigits );
+    // Decompose floating point number 
+    uint8_t numDigitsInNumber = log10( value ) + 1; // Digit cant be zero because func would have exited 
+    uint8_t writeArray[MAX_DIGITS_TO_DISPLAY] = { 0, 0, 0, 0 }; // Must zero the array upon restart - verify this is required. 
+    uint8_t writeIndex = 3; // Start the write index at the end of the write array. 
 
-    /* Extract digits from input (most significant digit first) and place into digit array. In this while loop, the 
-     * var numDigits serves as both an array indexer and a while loop counter. The nth digit of the input value is placed
-     * at the nth position of the dynamically allcoated array. */
-    while (numDigits)
+    while (numDigitsInNumber > 0)
     {
-        digitArray[numDigits] = value & 10;
+        writeArray[writeIndex] = (value % 10);
         value /= 10;
-        numDigits--;
+        writeIndex--;
+        numDigitsInNumber--;
     }
-
-    /* Write individual digits and enable shift register */
-    
-    
-
-
-
-
-    free( digitArray );
+    WriteSevenSegmentValue( ss, writeArray );
     return true;
 }
 
-static void SevenSeg_WriteIndividualDigit( const FourDigit7SegDisplay * const ss,
-                                           uint8_t value )
+// TODO write screen will be a generic function so that floats cal use the same. 
+
+
+static void WriteSevenSegmentValue( const FourDigit7SegDisplay * const ss,
+                                    const uint8_t * const writeArray )
 {
-    const uint8_t digitToWrite = digitEncodings[value];
-    SN74HC595N_WriteByteMSB(ss->sr, digitToWrite);
-    
-
+    // todo add checks 
+    size_t digitCounter;
+    uint8_t sval;
+    /* For every digit in the digit array (4) */
+    PORT_PIN digitList[4] = {ss->d1, ss->d2, ss->d3, ss->d4};
+    for (digitCounter = 0; digitCounter < MAX_DIGITS_TO_DISPLAY; digitCounter++)
+    {
+        /* Extract the value from the write array corresponding to the segment decoded value */
+        sval = digitEncodings[writeArray[digitCounter]]; // nth digit from input array. Extracts value from global write table 
+        SN74HC595N_WriteByteLSB( ss->sr,
+                                 sval );
+        PORT_PinWrite( digitList[digitCounter], true );
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        Nop();
+        PORT_PinWrite( digitList[digitCounter], false );
+    }
 }
-
 
 
 
