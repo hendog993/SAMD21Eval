@@ -34,7 +34,7 @@ static SN74HC595N tsr;
 /* Setup shift register */
 
 
-static volatile uint8_t val = 0x00u;
+
 
 int main( void )
 {
@@ -56,7 +56,7 @@ int main( void )
     {
         SYS_Tasks( );
 
-        SN74HC595N_WriteByteMSB( &tsr, val );
+        SN74HC595N_WriteByteMSB( &tsr, 0xA5u );
 
 
     }
@@ -66,33 +66,30 @@ int main( void )
 
 static void updateDutyCycle( __attribute__( (unused) ) TC_TIMER_STATUS status, uintptr_t context )
 {
-//    if (isUp)
-//    {
-//        if (maxDutyCycle != dutyCycle)
-//        {
-//            dutyCycle++;
-//        }
-//        else
-//        {
-//            isUp = false;
-//        }
-//    }
-//
-//    if (!isUp)
-//    {
-//        if (minDutyCycle != dutyCycle)
-//        {
-//            dutyCycle--;
-//        }
-//        else
-//        {
-//            isUp = true;
-//        }
-//    }
-//    TCC0_PWM24bitDutySet( TCC0_CHANNEL2, dutyCycle );
-//    TCC0_PWMForceUpdate( );
+    if (isUp)
+    {
+        if (maxDutyCycle != dutyCycle)
+        {
+            dutyCycle++;
+        }
+        else
+        {
+            isUp = false;
+        }
+    }
 
-    val++;
-    
-    
+    if (!isUp)
+    {
+        if (minDutyCycle != dutyCycle)
+        {
+            dutyCycle--;
+        }
+        else
+        {
+            isUp = true;
+        }
+    }
+    TCC0_PWM24bitDutySet( TCC0_CHANNEL2, dutyCycle );
+    TCC0_PWMForceUpdate( );
+
 }
