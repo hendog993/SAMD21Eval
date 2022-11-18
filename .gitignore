@@ -1,0 +1,4 @@
+firmware/SAMD21Eval.X/.build/
+firmware/SAMD21Eval.X/.generated_files/
+firmware/SAMD21Eval.X/.debug/
+firmware/SAMD21Eval.X/.nbproject/
